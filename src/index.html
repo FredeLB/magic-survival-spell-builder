@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Magic Survival Spell Builder</title>
+        <link rel="stylesheet" href="scss/styles.scss" />
+        <script type="module" src="./js/main.js"></script>
+    </head>
+    <body class="p-0">
+        <header class="container p-4 mb-4">
+            <h1>Spell Builder</h1>
+        </header>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Spell #1</th>
+                    <th scope="col">Spell #2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <h5 data-spell="electric-zone">Electric Zone</h5>
+                        <p>GOAL</p>
+                    </td>
+                    <td>
+                        <h5>Spell name</h5>
+                        <p>XYZ</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5>Arcane Ray</h5>
+                        <p>XYZ</p>
+                    </td>
+                    <td>
+                        <button
+                            type="button"
+                            class="btn btn-primary me-3"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasExample"
+                        >
+                            Toggle offcanvas
+                        </button>
+
+                        <div
+                            class="offcanvas offcanvas-end"
+                            tabindex="-1"
+                            id="offcanvasExample"
+                            aria-labelledby="offcanvasExampleLabel"
+                        >
+                            <div class="offcanvas-header">
+                                <h5
+                                    class="offcanvas-title"
+                                    id="offcanvasExampleLabel"
+                                >
+                                    Offcanvas
+                                </h5>
+                                <button
+                                    type="button"
+                                    class="btn-close text-reset"
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"
+                                ></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <div>
+                                    Some text as placeholder. In real life you
+                                    can have the elements you have chosen. Like,
+                                    text, images, lists, etc.
+                                </div>
+                                <div class="dropdown mt-3">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle"
+                                        type="button"
+                                        id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown"
+                                    >
+                                        Dropdown button
+                                    </button>
+                                    <ul
+                                        class="dropdown-menu"
+                                        aria-labelledby="dropdownMenuButton"
+                                    >
+                                        <li class="list-group-item">
+                                            <a class="dropdown-item" href="#"
+                                                >Action</a
+                                            >
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a class="dropdown-item" href="#"
+                                                >Another action</a
+                                            >
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a class="dropdown-item" href="#"
+                                                >Something else here</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Spell</th>
+                    <th scope="col">Combos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-spell="arcane-ray" class="table-success">
+                    <td>
+                        <h5 data-spell="arcane-ray">Arcane Ray</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-shock"
+                            >
+                                Electric Shock
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="flash-shock"
+                            >
+                                Flash Shock
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="incineration"
+                            >
+                                Incineration
+                            </li>
+                            <li class="list-group-item" data-spell="magic-bolt">
+                                Magic Bolt
+                            </li>
+                            <li class="list-group-item" data-spell="satellite">
+                                Satellite
+                            </li>
+                            <li class="list-group-item" data-spell="spirit">
+                                Spirit
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="armageddon">
+                    <td>
+                        <h5 data-spell="armageddon">Armageddon</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item"
+                                data-spell="flash-shock"
+                            >
+                                Flash Shock
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="blizzard">
+                    <td>
+                        <h5 data-spell="blizzard">Blizzard</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="fireball">
+                                Fireball
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="incineration"
+                            >
+                                Incineration
+                            </li>
+                            <li class="list-group-item" data-spell="meteor">
+                                Meteor
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="thunderstorm"
+                            >
+                                Thunderstorm
+                            </li>
+                            <li class="list-group-item" data-spell="tsunami">
+                                Tsunami
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="cyclone">
+                    <td>
+                        <h5 data-spell="cyclone">Cyclone</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-zone"
+                            >
+                                Electric Zone
+                            </li>
+                            <li class="list-group-item" data-spell="magic-bolt">
+                                Magic Bolt
+                            </li>
+                            <li class="list-group-item" data-spell="satellite">
+                                Satellite
+                            </li>
+                            <li class="list-group-item" data-spell="tsunami">
+                                Tsunami
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="electric-shock">
+                    <td>
+                        <h5 data-spell="electric-shock">Electric Shock</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="arcane-ray">
+                                Arcane Ray
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-zone"
+                            >
+                                Electric Zone
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="energy-bolt"
+                            >
+                                Electric Bolt
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="incineration"
+                            >
+                                Incineration
+                            </li>
+                            <li class="list-group-item" data-spell="spirit">
+                                Spirit
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="thunderstorm"
+                            >
+                                Thunderstorm
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="electric-zone" class="table-success">
+                    <td>
+                        <h5 data-spell="electric-zone">Electric Zone</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="cyclone">
+                                Cyclone
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-shock"
+                            >
+                                Electric Shock
+                            </li>
+                            <li class="list-group-item" data-spell="frost-nova">
+                                Frost Nova
+                            </li>
+                            <li class="list-group-item" data-spell="satellite">
+                                Satellite
+                            </li>
+                            <li class="list-group-item" data-spell="shield">
+                                Shield
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 data-spell="energy-bolt">Electric Bolt</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-shock"
+                            >
+                                Electric Shock
+                            </li>
+                            <li class="list-group-item" data-spell="fireball">
+                                Fireball
+                            </li>
+                            <li class="list-group-item" data-spell="magic-bolt">
+                                Magic Bolt
+                            </li>
+                            <li class="list-group-item" data-spell="shield">
+                                Shield
+                            </li>
+                            <li class="list-group-item" data-spell="spirit">
+                                Spirit
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="fireball">
+                    <td>
+                        <h5 data-spell="fireball">Fireball</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="blizzard">
+                                Blizzard
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="energy-bolt"
+                            >
+                                Electric Bolt
+                            </li>
+                            <li class="list-group-item" data-spell="magic-bolt">
+                                Magic Bolt
+                            </li>
+                            <li class="list-group-item" data-spell="satellite">
+                                Satellite
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="flash-shock">
+                    <td>
+                        <h5 data-spell="flash-shock">Flash Shock</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="arcane-ray">
+                                Arcane Ray
+                            </li>
+                            <li class="list-group-item" data-spell="armageddon">
+                                Armageddon
+                            </li>
+                            <li class="list-group-item" data-spell="magic-bolt">
+                                Magic Bolt
+                            </li>
+                            <li class="list-group-item" data-spell="spirit">
+                                Spirit
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="frost-nova">
+                    <td>
+                        <h5 data-spell="frost-nova">Frost Nova</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-zone"
+                            >
+                                Electric Zone
+                            </li>
+                            <li class="list-group-item" data-spell="meteor">
+                                Meteor
+                            </li>
+                            <li class="list-group-item" data-spell="tsunami">
+                                Tsunami
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="incineration">
+                    <td>
+                        <h5 data-spell="incineration">Incineration</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="arcane-ray">
+                                Arcane Ray
+                            </li>
+                            <li class="list-group-item" data-spell="blizzard">
+                                Blizzard
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-shock"
+                            >
+                                Electric Shock
+                            </li>
+                            <li class="list-group-item" data-spell="lava-zone">
+                                Lava Zone
+                            </li>
+                            <li class="list-group-item" data-spell="meteor">
+                                Meteor
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="lava-zone">
+                    <td>
+                        <h5 data-spell="lava-zone">Lava Zone</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item"
+                                data-spell="incineration"
+                            >
+                                Incineration
+                            </li>
+                            <li class="list-group-item" data-spell="meteor">
+                                Meteor
+                            </li>
+                            <li class="list-group-item" data-spell="satellite">
+                                Satellite
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="magic-bolt">
+                    <td>
+                        <h5 data-spell="magic-bolt">Magic Bolt</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="arcane-ray">
+                                Arcane Ray
+                            </li>
+                            <li class="list-group-item" data-spell="cyclone">
+                                Cyclone
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="energy-bolt"
+                            >
+                                Electric Bolt
+                            </li>
+                            <li class="list-group-item" data-spell="fireball">
+                                Fireball
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="flash-shock"
+                            >
+                                Flash Shock
+                            </li>
+                            <li class="list-group-item" data-spell="spirit">
+                                Spirit
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="meteor">
+                    <td>
+                        <h5 data-spell="meteor">Meteor</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="blizzard">
+                                Blizzard
+                            </li>
+                            <li class="list-group-item" data-spell="frost-nova">
+                                Frost Nova
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="incineration"
+                            >
+                                Incineration
+                            </li>
+                            <li class="list-group-item" data-spell="lava-zone">
+                                Lava Zone
+                            </li>
+                            <li class="list-group-item" data-spell="satellite">
+                                Satellite
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="thunderstorm"
+                            >
+                                Thunderstorm
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="satellite">
+                    <td>
+                        <h5 data-spell="satellite">Satellite</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="arcane-ray">
+                                Arcane Ray
+                            </li>
+                            <li class="list-group-item" data-spell="cyclone">
+                                Cyclone
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-zone"
+                            >
+                                Electric Zone
+                            </li>
+                            <li class="list-group-item" data-spell="fireball">
+                                Fireball
+                            </li>
+                            <li class="list-group-item" data-spell="lava-zone">
+                                Lava Zone
+                            </li>
+                            <li class="list-group-item" data-spell="meteor">
+                                Meteor
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="shield">
+                    <td>
+                        <h5 data-spell="shield">Shield</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-zone"
+                            >
+                                Electric Zone
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="energy-bolt"
+                            >
+                                Electric Bolt
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="spirit">
+                    <td>
+                        <h5 data-spell="spirit">Spirit</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="arcane-ray">
+                                Arcane Ray
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-shock"
+                            >
+                                Electric Shock
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="energy-bolt"
+                            >
+                                Electric Bolt
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="flash-shock"
+                            >
+                                Flash Shock
+                            </li>
+                            <li class="list-group-item" data-spell="magic-bolt">
+                                Magic Bolt
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="thunderstorm">
+                    <td>
+                        <h5 data-spell="thunderstorm">Thunderstorm</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="blizzard">
+                                Blizzard
+                            </li>
+                            <li
+                                class="list-group-item"
+                                data-spell="electric-shock"
+                            >
+                                Electric Shock
+                            </li>
+                            <li class="list-group-item" data-spell="meteor">
+                                Meteor
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr data-spell="tsunami">
+                    <td>
+                        <h5 data-spell="tsunami">Tsunami</h5>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-spell="blizzard">
+                                Blizzard
+                            </li>
+                            <li class="list-group-item" data-spell="cyclone">
+                                Cyclone
+                            </li>
+                            <li class="list-group-item" data-spell="frost-nova">
+                                Frost Nova
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
