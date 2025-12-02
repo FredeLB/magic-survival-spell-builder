@@ -8,5 +8,6 @@ export interface Spell {
 }
 
 export interface Combo {
+    name: string,
     spells: {id: string, attribute: SpellAttribute}[],
 }

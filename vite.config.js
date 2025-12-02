@@ -2,8 +2,10 @@ import { resolve } from 'path'
 
 export default {
     root: resolve(__dirname, 'src'),
+    base: '/',
     build: {
-        outDir: '../dist'
+        outDir: resolve(__dirname, 'dist'),
+        emptyOutDir: true, // This enables emptying
     },
     server: {
         base: '/magic-survival-spell-builder/',
