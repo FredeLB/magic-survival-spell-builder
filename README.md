@@ -71,3 +71,21 @@ export default defineConfig([
   },
 ])
 ```
+
+## Command Line Utility
+
+Installing the package creates a `gh-pages` command line utility.  Run `gh-pages --help` to see a list of supported options.
+
+With a local install of `gh-pages`, you can set up a package script with something like the following:
+
+```shell
+"scripts": {
+  "deploy": "gh-pages -d dist"
+}
+```
+
+And then to publish everything from your `dist` folder to your `gh-pages` branch, you'd run this:
+
+```shell
+npm run deploy
+```
