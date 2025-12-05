@@ -1,12 +1,14 @@
 import { useState } from "react";
 
-import { SPELLS } from "./js/constants/_index";
+// import type { Spell } from 'js/types/_index'; 
+import { SPELLS } from "js/constants/_index";
 
-import { SpellAutoComplete } from "./components/SpellAutoComplete";
+import { SpellAutoComplete } from "components/SpellAutoComplete";
 
 
 function App() {
     const [count, setCount] = useState(0);
+    const [activeSpells, updateActiveSpells] = useState([]);
 
     return (
         <>

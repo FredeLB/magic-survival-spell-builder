@@ -1,5 +1,5 @@
-import type { Spell } from '../types/_index'; 
-import { SPELL_FAMILY } from '../enums/_index';  
+import type { Spell } from 'js/types/_index'; 
+import { SPELL_FAMILY } from 'js/enums/_index';  
 
 
 export const SPELLS: Spell[] = [

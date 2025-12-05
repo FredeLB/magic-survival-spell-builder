@@ -1,4 +1,4 @@
-import type { SpellFamily } from "../enums/SpellFamily";
+import type { SpellFamily } from "js/enums/SpellFamily";
 
 export interface Spell {
     readonly id: string,

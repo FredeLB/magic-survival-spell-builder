@@ -1,16 +1,12 @@
 import { useState } from "react";
-
-import type { Spell } from '../js/types/_index'; 
-import { SPELLS } from "../js/constants/_index";
-
 import { AutoComplete } from "antd";
-import type { AutoCompleteProps } from "antd";
 
+import type { AutoCompleteProps } from "antd";
+import type { Spell } from 'js/types/_index'; 
 
 interface Props {
     list: Spell[]
 }
-
 
 function SpellAutoComplete(props: Props) {
 

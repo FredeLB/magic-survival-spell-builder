@@ -1,4 +1,4 @@
-import type { SpellAttribute } from "../enums/SpellAttribute";
+import type { SpellAttribute } from "js/enums/SpellAttribute";
 
 export interface Combo {
     name: string,

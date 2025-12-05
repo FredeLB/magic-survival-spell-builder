@@ -1,5 +1,5 @@
-import type { Combo } from '../types/_index'; 
-import { SPELL_ATTRIBUTE } from '../enums/_index';  
+import type { Combo } from 'js/types/_index'; 
+import { SPELL_ATTRIBUTE } from 'js/enums/_index';  
 
 
 export const COMBOS: Combo[] = [
