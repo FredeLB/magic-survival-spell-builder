@@ -1,5 +1,5 @@
-import type { Spell } from 'js/types/_index'; 
-import { SPELL_FAMILY } from 'js/enums/_index';  
+import type { Spell } from 'types/_index'; 
+import { SPELL_FAMILY } from 'enums/_index';  
 
 
 export const SPELLS: Spell[] = [
@@ -14,7 +14,8 @@ export const SPELLS: Spell[] = [
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h", // magic bolt
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // satellite 
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b" // spirit
-        ]
+        ],
+        active: false
     },
     {
         id: "c4e1f3d2-F8b4-4d3e-9e2a-1b5f6c7d8e9f",
@@ -22,11 +23,12 @@ export const SPELLS: Spell[] = [
         family: SPELL_FAMILY.Utility,
         compatibleSpells: [
             "fcb4892f-8ae9-6ca5-4a4b-b26bd592a809" // flash shock
-        ]
+        ],
+        active: false
     },
     {
         id: "1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6",
-        name: "blizzard",
+        name: "Blizzard",
         family: SPELL_FAMILY.NaturesWrath,
         compatibleSpells: [
             "001ed428-7728-4205-910a-2ebc523c1323", // fireball
@@ -34,22 +36,24 @@ export const SPELLS: Spell[] = [
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // meteor
             "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2", // thunderstorm
             "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d" // tsunami
-        ]
+        ],
+        active: false
     },
     {
         id: "7g8h9i0j-k1l2m3n4o5p6-1a2b-3c4d-5e6f",
-        name: "cyclone",
+        name: "Cyclone",
         family: SPELL_FAMILY.NaturesWrath,
         compatibleSpells: [
             "5e6f7g8h-9i0j-k1l2-m3n4-o5p61a2b3c4d", // electric zone
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h", // magic bolt
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // satellite
             "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d" // tsunami
-        ]
+        ],
+        active: false
     },
     {
         id: "d592a809-fcb4-892f-8ae9-6ca54a4bb26b",
-        name: "electric shock",
+        name: "Electric Shock",
         family: SPELL_FAMILY.StormyClouds,
         compatibleSpells: [
             "892f8ae9-6ca5-4a4b-b26b-d592a809fcb4", // arcane ray
@@ -58,11 +62,12 @@ export const SPELLS: Spell[] = [
             "6ca54a4b-b26b-d592-a809-fcb4892f8ae9", // incineration
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b", // spirit
             "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2" // thunderstorm
-        ]
+        ],
+        active: false
     },
     {
         id: "5e6f7g8h-9i0j-k1l2-m3n4-o5p61a2b3c4d",
-        name: "electric zone",
+        name: "Electric Zone",
         family: SPELL_FAMILY.StormyClouds,
         compatibleSpells: [
             "7g8h9i0j-k1l2m3n4o5p6-1a2b-3c4d-5e6f", // cyclone
@@ -70,11 +75,12 @@ export const SPELLS: Spell[] = [
             "o5p61a2b-3c4d-5e6f-7g8h-9i0jk1l2m3n4", // frost nova
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // satellite
             "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4d" // shield
-        ]
+        ],
+        active: false
     },
     {
         id: "k1l2m3n4-o5p6-1a2b-3c4d-5e6f7g8h9i0j",
-        name: "energy bolt",
+        name: "Energy Bolt",
         family: SPELL_FAMILY.EnergyEngineering,
         compatibleSpells: [
             "d592a809-fcb4-892f-8ae9-6ca54a4bb26b", // electric shock
@@ -82,18 +88,20 @@ export const SPELLS: Spell[] = [
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h", // magic bolt
             "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4d", // shield
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b" // spirit
-        ]
+        ],
+        active: false
     },
     {
         id: "001ed428-7728-4205-910a-2ebc523c1323",
-        name: "fireball",
+        name: "Fireball",
         family: SPELL_FAMILY.LordOfFire,
         compatibleSpells: [
             "1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6", // blizzard
             "k1l2m3n4-o5p6-1a2b-3c4d-5e6f7g8h9i0j", // energy bolt
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h", // magic bolt
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // satellite
-        ]
+        ],
+        active: false
     },
     {
         id: "fcb4892f-8ae9-6ca5-4a4b-b26bd592a809",
@@ -104,7 +112,8 @@ export const SPELLS: Spell[] = [
             "c4e1f3d2-F8b4-4d3e-9e2a-1b5f6c7d8e9f", // armageddon
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h", // magic bolt
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b" // spirit
-        ]
+        ],
+        active: false
     },
     {
         id: "o5p61a2b-3c4d-5e6f-7g8h-9i0jk1l2m3n4",
@@ -114,7 +123,8 @@ export const SPELLS: Spell[] = [
             "5e6f7g8h-9i0j-k1l2-m3n4-o5p61a2b3c4d", // electric zone
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // meteor
             "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d" // tsunami
-        ]
+        ],
+        active: false
     },
     {
         id: "6ca54a4b-b26b-d592-a809-fcb4892f8ae9",
@@ -126,7 +136,8 @@ export const SPELLS: Spell[] = [
             "d592a809-fcb4-892f-8ae9-6ca54a4bb26b", // electric shock
             "3c4d5e6f-7g8h-9i0j-k1l2-m3n4o5p61a2b", // lava zone
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // meteor
-        ]
+        ],
+        active: false
     },
     {
         id: "3c4d5e6f-7g8h-9i0j-k1l2-m3n4o5p61a2b",
@@ -136,11 +147,12 @@ export const SPELLS: Spell[] = [
             "6ca54a4b-b26b-d592-a809-fcb4892f8ae9", // incineration
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // meteor
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // fireball
-        ]
+        ],
+        active: false
     },
     {
         id: "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h",
-        name: "magic bolt",
+        name: "Magic Bolt",
         family: SPELL_FAMILY.None,
         compatibleSpells: [
             "892f8ae9-6ca5-4a4b-b26b-d592a809fcb4", // arcane ray
@@ -149,11 +161,12 @@ export const SPELLS: Spell[] = [
             "001ed428-7728-4205-910a-2ebc523c1323", // fireball
             "fcb4892f-8ae9-6ca5-4a4b-b26bd592a809", // flash shock
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b" // spirit
-        ]
+        ],
+        active: false
     },
     {
         id: "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f",
-        name: "meteor",
+        name: "Meteor",
         family: SPELL_FAMILY.LordOfFire,
         compatibleSpells: [
             "1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6", // blizzard
@@ -162,11 +175,12 @@ export const SPELLS: Spell[] = [
             "3c4d5e6f-7g8h-9i0j-k1l2-m3n4o5p61a2b", // lava zone
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // satellite
             "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2" // thunderstorm
-        ]
+        ],
+        active: false
     },
     {
         id: "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f",
-        name: "satellite",
+        name: "Satellite",
         family: SPELL_FAMILY.EnergyEngineering,
         compatibleSpells: [
             "892f8ae9-6ca5-4a4b-b26b-d592a809fcb4", // arcane ray
@@ -175,20 +189,22 @@ export const SPELLS: Spell[] = [
             "001ed428-7728-4205-910a-2ebc523c1323", // fireball 
             "3c4d5e6f-7g8h-9i0j-k1l2-m3n4o5p61a2b", // lava zone
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // meteor
-        ]
+        ],
+        active: false
     },
     {
         id: "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4d",
-        name: "shield",
+        name: "Shield",
         family: SPELL_FAMILY.Utility,
         compatibleSpells: [
             "5e6f7g8h-9i0j-k1l2-m3n4-o5p61a2b3c4d", // electric zone
             "k1l2m3n4-o5p6-1a2b-3c4d-5e6f7g8h9i0j" // energy bolt
-        ]
+        ],
+        active: false
     },
     {
         id: "b26bd592-a809-fcb4-892f-8ae96ca54a4b",
-        name: "spirit",
+        name: "Spirit",
         family: SPELL_FAMILY.EnergyEngineering,
         compatibleSpells: [
             "892f8ae9-6ca5-4a4b-b26b-d592a809fcb4", // arcane ray
@@ -196,26 +212,29 @@ export const SPELLS: Spell[] = [
             "k1l2m3n4-o5p6-1a2b-3c4d-5e6f7g8h9i0j", // energy bolt
             "fcb4892f-8ae9-6ca5-4a4b-b26bd592a809", // flash shock
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h" // magic bolt
-        ]
+        ],
+        active: false
     },
     {
         id: "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2",
-        name: "thunderstorm",
+        name: "Thunderstorm",
         family: SPELL_FAMILY.StormyClouds,
         compatibleSpells: [
             "1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6", // blizzard
             "d592a809-fcb4-892f-8ae9-6ca54a4bb26b", // electric shock
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // meteor
-        ]
+        ],
+        active: false
     },
     {
         id: "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d",
-        name: "tsunami",
+        name: "Tsunami",
         family: SPELL_FAMILY.NaturesWrath,
         compatibleSpells: [
             "1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6", // blizzard
             "7g8h9i0j-k1l2m3n4o5p6-1a2b-3c4d-5e6f", // cyclone
             "o5p61a2b-3c4d-5e6f-7g8h-9i0jk1l2m3n4" // frost nova
-        ]
+        ],
+        active: false
     }
 ];

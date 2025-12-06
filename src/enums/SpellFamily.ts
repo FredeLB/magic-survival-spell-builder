@@ -1,9 +1,9 @@
 // Runtime objects with const assertions
 export const SPELL_FAMILY = {
-    LordOfFire: 'LordOfFire',
-    StormyClouds: 'StormyClouds',
-    NaturesWrath: 'NaturesWrath',
-    EnergyEngineering: 'EnergyEngineering',
+    LordOfFire: 'Lord Of Fire',
+    StormyClouds: 'Stormy Clouds',
+    NaturesWrath: 'Natures Wrath',
+    EnergyEngineering: 'Energy Engineering',
     Utility: 'Utility',
     None: 'None',
 } as const;
