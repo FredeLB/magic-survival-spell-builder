@@ -1,5 +1,5 @@
-import type { Spell } from 'types/_index'; 
-import { SPELL_FAMILY } from 'enums/_index';  
+import type { Spell } from '_types'; 
+import { SPELL_FAMILY, CUSTOM_TYPE } from '_enums';  
 
 
 export const SPELLS: Spell[] = [
@@ -15,7 +15,11 @@ export const SPELLS: Spell[] = [
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // satellite 
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b" // spirit
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null, // Add appropriate value for attribute
+        activeCombo: null, // Add appropriate value for activeCombo
+        
     },
     {
         id: "c4e1f3d2-F8b4-4d3e-9e2a-1b5f6c7d8e9f",
@@ -24,7 +28,10 @@ export const SPELLS: Spell[] = [
         compatibleSpells: [
             "fcb4892f-8ae9-6ca5-4a4b-b26bd592a809" // flash shock
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6",
@@ -37,7 +44,10 @@ export const SPELLS: Spell[] = [
             "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2", // thunderstorm
             "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d" // tsunami
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "7g8h9i0j-k1l2m3n4o5p6-1a2b-3c4d-5e6f",
@@ -49,7 +59,10 @@ export const SPELLS: Spell[] = [
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // satellite
             "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d" // tsunami
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "d592a809-fcb4-892f-8ae9-6ca54a4bb26b",
@@ -63,7 +76,10 @@ export const SPELLS: Spell[] = [
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b", // spirit
             "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2" // thunderstorm
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "5e6f7g8h-9i0j-k1l2-m3n4-o5p61a2b3c4d",
@@ -76,7 +92,10 @@ export const SPELLS: Spell[] = [
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // satellite
             "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4d" // shield
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "k1l2m3n4-o5p6-1a2b-3c4d-5e6f7g8h9i0j",
@@ -89,7 +108,10 @@ export const SPELLS: Spell[] = [
             "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4d", // shield
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b" // spirit
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "001ed428-7728-4205-910a-2ebc523c1323",
@@ -101,7 +123,10 @@ export const SPELLS: Spell[] = [
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h", // magic bolt
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // satellite
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "fcb4892f-8ae9-6ca5-4a4b-b26bd592a809",
@@ -113,7 +138,10 @@ export const SPELLS: Spell[] = [
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h", // magic bolt
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b" // spirit
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "o5p61a2b-3c4d-5e6f-7g8h-9i0jk1l2m3n4",
@@ -124,7 +152,10 @@ export const SPELLS: Spell[] = [
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // meteor
             "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d" // tsunami
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "6ca54a4b-b26b-d592-a809-fcb4892f8ae9",
@@ -137,7 +168,10 @@ export const SPELLS: Spell[] = [
             "3c4d5e6f-7g8h-9i0j-k1l2-m3n4o5p61a2b", // lava zone
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // meteor
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "3c4d5e6f-7g8h-9i0j-k1l2-m3n4o5p61a2b",
@@ -148,7 +182,10 @@ export const SPELLS: Spell[] = [
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // meteor
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // fireball
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h",
@@ -162,7 +199,10 @@ export const SPELLS: Spell[] = [
             "fcb4892f-8ae9-6ca5-4a4b-b26bd592a809", // flash shock
             "b26bd592-a809-fcb4-892f-8ae96ca54a4b" // spirit
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f",
@@ -176,7 +216,10 @@ export const SPELLS: Spell[] = [
             "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f", // satellite
             "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2" // thunderstorm
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f",
@@ -190,7 +233,10 @@ export const SPELLS: Spell[] = [
             "3c4d5e6f-7g8h-9i0j-k1l2-m3n4o5p61a2b", // lava zone
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // meteor
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4d",
@@ -200,7 +246,10 @@ export const SPELLS: Spell[] = [
             "5e6f7g8h-9i0j-k1l2-m3n4-o5p61a2b3c4d", // electric zone
             "k1l2m3n4-o5p6-1a2b-3c4d-5e6f7g8h9i0j" // energy bolt
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "b26bd592-a809-fcb4-892f-8ae96ca54a4b",
@@ -213,7 +262,10 @@ export const SPELLS: Spell[] = [
             "fcb4892f-8ae9-6ca5-4a4b-b26bd592a809", // flash shock
             "k1l2-m3n4-o5p6-1a2b-3c4d5e6f7g8h" // magic bolt
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2",
@@ -224,7 +276,10 @@ export const SPELLS: Spell[] = [
             "d592a809-fcb4-892f-8ae9-6ca54a4bb26b", // electric shock
             "7g8h9i0j-k1l2-m3n4-o5p6-1a2b3c4d5e6f" // meteor
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     },
     {
         id: "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d",
@@ -235,6 +290,9 @@ export const SPELLS: Spell[] = [
             "7g8h9i0j-k1l2m3n4o5p6-1a2b-3c4d-5e6f", // cyclone
             "o5p61a2b-3c4d-5e6f-7g8h-9i0jk1l2m3n4" // frost nova
         ],
-        active: false
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
     }
 ];

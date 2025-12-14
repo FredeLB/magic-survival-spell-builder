@@ -4,7 +4,7 @@ import { AutoComplete, Flex, Button } from "antd";
 
 import type { AutoCompleteProps } from "antd";
 import type { DefaultOptionType } from "antd/es/select";
-import type { Spell } from "types/_index";
+import type { Spell } from "_types";
 
 interface Props {
     list: Spell[];
@@ -18,7 +18,7 @@ function BuilderAutoComplete(props: Props) {
     const { list } = props;
 
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState("");
     const [options, setOptions] = useState<AutoCompleteProps["options"]>([]);
     const [selectedValues, setSelectedValues] = useState<Spell[]>([]);
 
@@ -31,8 +31,10 @@ function BuilderAutoComplete(props: Props) {
 
             const searchValue = inputValue.toLowerCase();
             return list
-                .filter((spell) =>
-                    spell.name.toLowerCase().includes(searchValue) || spell.family.toLowerCase().includes(searchValue) 
+                .filter(
+                    (spell) =>
+                        spell.name.toLowerCase().includes(searchValue) ||
+                        spell.family.toLowerCase().includes(searchValue)
                 )
                 .map((spell) => ({
                     label: (
@@ -61,18 +63,20 @@ function BuilderAutoComplete(props: Props) {
         setTimeout(() => setOpen(false), 200);
     };
 
-    const handleSelect = (_: string, option: CustomOptionType) => {   
-        
+    const handleSelect = (_: string, option: CustomOptionType) => {
         setSelectedValues((prevValues) => {
-            if (option.spell && !prevValues.find((spell) => spell.id === option?.spell?.id)) {
+            if (
+                option.spell &&
+                !prevValues.find((spell) => spell.id === option?.spell?.id)
+            ) {
                 return [...prevValues, option.spell as Spell];
             }
             return prevValues; // Spell already selected, do not add
         });
 
-        setValue('');
+        setValue("");
         setOpen(false); // Close on select
-    }
+    };
 
     const handleChange = (text: string) => {
         setValue(text);
@@ -80,7 +84,7 @@ function BuilderAutoComplete(props: Props) {
     };
 
     const removeValue = (spell: Spell) => {
-        setSelectedValues(selectedValues.filter(s => s !== spell))
+        setSelectedValues(selectedValues.filter((s) => s !== spell));
     };
 
     return (
@@ -96,11 +100,19 @@ function BuilderAutoComplete(props: Props) {
                 onSelect={handleSelect}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                style={{ width: '100%' }}
+                style={{ width: "100%" }}
             />
-            <Flex wrap gap="small">
+            <Flex gap="small" wrap>
                 {selectedValues.map((spell: Spell) => (
-                    <Button type="primary" key={spell.id} icon={<CloseOutlined />} iconPlacement={'end'} onClick={() => removeValue(spell)}>{spell.name}</Button>
+                    <Button
+                        type="primary"
+                        key={spell.id}
+                        icon={<CloseOutlined />}
+                        iconPlacement={"end"}
+                        onClick={() => removeValue(spell)}
+                    >
+                        {spell.name}
+                    </Button>
                 ))}
             </Flex>
         </>

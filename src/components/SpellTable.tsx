@@ -1,83 +1,130 @@
-// import { useState } from "react";
-import { SPELLS } from "constants/_index";
+import { useMemo } from "react";
 
 import type { TableProps } from "antd";
-import type { Spell } from "types/_index";
-import { SPELL_FAMILY, type SpellFamily } from "enums/SpellFamily";
+import type { Spell, Combo } from "_types";
 
-import { Table, Tag } from "antd";
-import { getCompatibleSpells } from "utils";
+import { Badge, Flex, Space, Table, Tag } from "antd";
+import { SpellPicker } from "_components";
 
-function SpellTable() {
+import {
+    generateUniqueKey,
+    getUIColorByCustomType,
+    getUIColorBySpellFamily,
+    getCompatibleSpells,
+} from "_utils";
+
+import { CUSTOM_TYPE } from "_enums";
+
+interface Props {
+    spells: Spell[];
+    combos: Combo[];
+    hideFamilyColumn: boolean;
+}
+
+function SpellTable(props: Props) {
+    const { spells, combos, hideFamilyColumn } = props;
+
+
+    // Pre-sort data before passing to table
+    const sortedData = useMemo(() => {
+        return [...spells].sort((a, b) => {
+            // Active combos first (true comes before false)
+            if (a.active !== b.active) {
+                return a.active ? -1 : 1;
+            }
+            
+            // Both have same active status, sort alphabetically by name
+            return a.name.localeCompare(b.name);
+        });
+    }, [spells]);
+
     const columns: TableProps<Spell>["columns"] = [
         {
             title: "Name",
             dataIndex: "name",
             key: "name",
             sorter: (a, b) => a.name.localeCompare(b.name), // Simple alphabetical sort
-            render: (name: string) => <div>{name}</div>,
+            render: (_, record: Spell) => {
+                return (
+                    <>
+                        <Flex gap="small" wrap>
+                            {record.activeAttribute ? (
+                                <Tag
+                                    key={generateUniqueKey()}
+                                    color={getUIColorByCustomType(
+                                        CUSTOM_TYPE.Attribute
+                                    )}
+                                    variant="solid"
+                                >
+                                    {record.activeAttribute}
+                                </Tag>
+                            ) : null}
+                            {record.activeCombo ? (
+                                <Tag
+                                    key={generateUniqueKey()}
+                                    color={getUIColorByCustomType(
+                                        CUSTOM_TYPE.Combo
+                                    )}
+                                    variant="solid"
+                                >
+                                    {record.activeCombo.name}
+                                </Tag>
+                            ) : null}
+                        </Flex>
+                        <Space>
+                            <Badge 
+                                key={generateUniqueKey()}
+                                status={record.active ? "success" : "default"}
+                            />
+
+                            <p>{record.name}</p>
+                        </Space>
+                    </>
+                );
+            },
         },
         {
             title: "Family",
             dataIndex: "family",
             key: "family",
+            hidden: hideFamilyColumn,
             sorter: (a, b) => a.family.localeCompare(b.family), // Simple alphabetical sort
-            // render: (family: SpellFamily) => <div>{family}</div>,
-            render: (family: SpellFamily) => {
-                let color;
-                switch (family) {
-                    case SPELL_FAMILY.LordOfFire:
-                        color = "red";
-                        break;
-                    case SPELL_FAMILY.StormyClouds:
-                        color = "cyan";
-                        break;
-                    case SPELL_FAMILY.NaturesWrath:
-                        color = "green";
-                        break;
-                    case SPELL_FAMILY.EnergyEngineering:
-                        color = "blue";
-                        break;
-                    default:
-                        color = "black";
-                }
+            render: (_, record: Spell) => {
                 return (
-                    <Tag color={color} key={family}>
-                        {family}
+                    <Tag
+                        color={getUIColorBySpellFamily(record.family)}
+                        key={record.family}
+                    >
+                        {record.family}
                     </Tag>
+                );
+            },
+        },
+        {
+            title: "Options",
+            key: "options",
+            render: (_, record: Spell) => {
+                return (
+                    <SpellPicker
+                        title={"Compatible Spells - " + record.name}
+                        label="Combine"
+                        spells={getCompatibleSpells(record, spells, combos)}
+                        // onSelect={(selection) => {
+                        //     activateSpell(selection as Spell);
+                        // }}
+                    />
                 );
             },
         },
     ];
 
-    const expandColumns: TableProps<Spell>["columns"] = [
-        {
-            title: "Name",
-            dataIndex: "name",
-            key: "name",
-            sorter: (a, b) => a.name.localeCompare(b.name), // Simple alphabetical sort
-            render: (name: string) => <div>{name}</div>,
-        },
-    ];
-
     return (
         <Table
-            rowKey="name"
+            rowKey="id"
             columns={columns}
-            dataSource={SPELLS}
+            dataSource={sortedData}
             pagination={false}
-            expandable={{
-                expandedRowRender: (spell: Spell) => {
-                    return (
-                        <Table<Spell>
-                            rowKey={(record) => record.id}
-                            columns={expandColumns}
-                            dataSource={getCompatibleSpells(spell)}
-                            pagination={false}
-                        />
-                    );
-                },
-            }}
+            showSorterTooltip={false}
         />
     );
 }
