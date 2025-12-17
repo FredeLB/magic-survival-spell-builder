@@ -6,9 +6,11 @@ import type { SpellAttribute } from "_enums";
 
 import { CUSTOM_TYPE } from "_enums";
 
-import { Table, Button, Flex } from "antd";
+import { Table, Button, Flex, Space } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import { PickerDrawer } from "_components";
+import { 
+    AttributePicker,
+ } from "_components";
 
 import {
     getActiveSpells,
@@ -17,6 +19,7 @@ import {
     generateUniqueKey,
     getUIColorByCustomType,
 } from "_utils";
+import { ComboPicker } from "./ComboPicker";
 
 interface Props {
     spells: Spell[];
@@ -33,7 +36,7 @@ function ActiveSpellTable(props: Props) {
     const { spells, combos, onComboSelect, onSpellAttributeSelect, onSpellDeactivation } = props;
 
     // Pre-sort data before passing to table
-    const sortedData = useMemo(() => {
+    const sortedSpells = useMemo(() => {
         return [...spells].sort((a, b) => {
             const comboNameA = a.activeCombo?.name || "";
             const comboNameB = b.activeCombo?.name || "";
@@ -66,13 +69,12 @@ function ActiveSpellTable(props: Props) {
                 );
             },
         },
-
         {
             title: "Options",
             key: "Options",
             render: (_, record: Spell) => {
                 return (
-                    <Flex gap="small" wrap>
+                    <Space orientation="vertical">
                         {record.activeAttribute != null ? (
                             <Button
                                 key={generateUniqueKey()}
@@ -80,6 +82,7 @@ function ActiveSpellTable(props: Props) {
                                     CUSTOM_TYPE.Attribute
                                 )}
                                 variant="solid"
+                                size="middle"
                                 icon={<CloseOutlined />}
                                 iconPlacement={"end"}
                                 onClick={() =>
@@ -89,18 +92,15 @@ function ActiveSpellTable(props: Props) {
                                 {record.activeAttribute}
                             </Button>
                         ) : (
-                            <PickerDrawer
+                            <AttributePicker
                                 title={"Attributes - " + record.name}
-                                btnLabel="Attribute"
-                                btnColor={getUIColorByCustomType(
-                                    CUSTOM_TYPE.Attribute
-                                )}
-                                items={getSpellPotentialAttributes(record, combos)}
-                                onSelect={(selection) => {
-                                    onSpellAttributeSelect(
-                                        record,
-                                        selection as SpellAttribute
-                                    );
+                                label="Attributes"
+                                attributes={getSpellPotentialAttributes(record, combos)}
+                                onSelect={(attribute: SpellAttribute) => {
+                                        onSpellAttributeSelect(
+                                            record,
+                                            attribute
+                                        );
                                 }}
                             />
                         )}
@@ -111,6 +111,7 @@ function ActiveSpellTable(props: Props) {
                                     CUSTOM_TYPE.Combo
                                 )}
                                 variant="solid"
+                                size="middle"
                                 icon={<CloseOutlined />}
                                 iconPlacement={"end"}
                                 onClick={() => onComboSelect(record, null)}
@@ -118,19 +119,25 @@ function ActiveSpellTable(props: Props) {
                                 {record.activeCombo.name}
                             </Button>
                         ) : (
-                            <PickerDrawer
+                            <ComboPicker
                                 title={"Combos - " + record.name}
-                                btnLabel="Combo"
-                                btnColor={getUIColorByCustomType(
-                                    CUSTOM_TYPE.Combo
-                                )}
-                                items={getSpellPotentialCombos(record, combos)}
-                                onSelect={(selection) => {
-                                    onComboSelect(record, selection as Combo);
+                                label="Combo"
+                                combos={getSpellPotentialCombos(record, combos)}
+                                onSelect={(combo) => {
+                                    onComboSelect(record, combo);
                                 }}
                             />
                         )}
-
+                    </Space>
+                );
+            },
+        },
+        {
+            title: "",
+            key: "Close",
+            render: (_, record: Spell) => {
+                return (
+                    <Flex gap="small" wrap>
                         <Button
                             key={generateUniqueKey()}
                             color="danger"
@@ -150,7 +157,7 @@ function ActiveSpellTable(props: Props) {
             <Table
                 rowKey="id"
                 columns={columns}
-                dataSource={getActiveSpells(sortedData)}
+                dataSource={getActiveSpells(sortedSpells)}
                 pagination={false}
             />
         </>

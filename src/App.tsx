@@ -4,7 +4,7 @@ import type { TabsProps } from "antd";
 import type { Combo, Spell } from "_types";
 import type { SpellAttribute } from "enums/SpellAttribute";
 
-import { Flex, Space, Switch, Tabs } from "antd";
+import { Flex, Switch, Tabs, Typography } from "antd";
 import {
     ActiveSpellTable,
     ComboTable,
@@ -12,15 +12,22 @@ import {
     SpellTable,
 } from "_components";
 
-import { getInactiveSpells, getComboSpellsAndAttributes, getActiveSpells } from "_utils"
+
+import { getInactiveSpells, getActiveSpells } from "_utils"
 
 import { COMBOS, SPELLS } from "_constants";
 
+const { Title } = Typography;
 
 function App() {
-    const [spells, setSpells] = useState<Spell[]>(SPELLS);
-    const [combos, setCombos] = useState<Combo[]>(COMBOS);
+    const [spells, setSpells] = useState<Spell[]>(
+        SPELLS.sort((a, b) => a.name.localeCompare(b.name))
+    );
+    const [combos, setCombos] = useState<Combo[]>(
+        COMBOS.sort((a, b) => a.name.localeCompare(b.name))
+    );
     const [hideFamilyColumn, setHideFamilyColumn] = useState<boolean>(true);
+
 
     const items: TabsProps["items"] = [
         {
@@ -69,7 +76,6 @@ function App() {
                     // no change
                     return combo
                 } else {
-                    console.log('snap')
                     return {
                         ...combo,
                         active: false,
@@ -144,7 +150,7 @@ function App() {
 
     return (
         <>
-            <h1>Spell Builder</h1>
+            <Title>Spell Builder</Title>
 
             <ActiveSpellTable
                 spells={spells}

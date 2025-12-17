@@ -23,7 +23,7 @@ function ComboTable(props: Props) {
     const { combos, spells } = props;
 
     // Pre-sort data before passing to table
-    const sortedData = useMemo(() => {
+    const sortedCombos = useMemo(() => {
         return [...combos].sort((a, b) => {
             // Active combos first (true comes before false)
             if (a.active !== b.active) {
@@ -109,7 +109,7 @@ function ComboTable(props: Props) {
         <Table
             rowKey="id"
             columns={columns}
-            dataSource={sortedData}
+            dataSource={sortedCombos}
             pagination={false}
             showSorterTooltip={false}
         />

@@ -34,7 +34,7 @@ const DrawerTrigger = forwardRef<DrawerTriggerRef, Props>(
                 <Button
                     size="middle"
                     color={triggerBtnColor}
-                    variant={triggerBtnVariant}
+                    variant={triggerBtnVariant ?? "outlined"}
                     onClick={() => setOpen(true)}
                 >
                     {triggerBtnLabel}

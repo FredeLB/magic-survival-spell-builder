@@ -24,9 +24,8 @@ interface Props {
 function SpellTable(props: Props) {
     const { spells, combos, hideFamilyColumn } = props;
 
-
     // Pre-sort data before passing to table
-    const sortedData = useMemo(() => {
+    const sortedTableData = useMemo(() => {
         return [...spells].sort((a, b) => {
             // Active combos first (true comes before false)
             if (a.active !== b.active) {
@@ -40,37 +39,13 @@ function SpellTable(props: Props) {
 
     const columns: TableProps<Spell>["columns"] = [
         {
-            title: "Name",
+            title: "Spell",
             dataIndex: "name",
-            key: "name",
+            key: "spell",
             sorter: (a, b) => a.name.localeCompare(b.name), // Simple alphabetical sort
             render: (_, record: Spell) => {
                 return (
-                    <>
-                        <Flex gap="small" wrap>
-                            {record.activeAttribute ? (
-                                <Tag
-                                    key={generateUniqueKey()}
-                                    color={getUIColorByCustomType(
-                                        CUSTOM_TYPE.Attribute
-                                    )}
-                                    variant="solid"
-                                >
-                                    {record.activeAttribute}
-                                </Tag>
-                            ) : null}
-                            {record.activeCombo ? (
-                                <Tag
-                                    key={generateUniqueKey()}
-                                    color={getUIColorByCustomType(
-                                        CUSTOM_TYPE.Combo
-                                    )}
-                                    variant="solid"
-                                >
-                                    {record.activeCombo.name}
-                                </Tag>
-                            ) : null}
-                        </Flex>
+                    <Space orientation="vertical">
                         <Space>
                             <Badge 
                                 key={generateUniqueKey()}
@@ -79,7 +54,16 @@ function SpellTable(props: Props) {
 
                             <p>{record.name}</p>
                         </Space>
-                    </>
+
+                        <SpellPicker
+                            title={"Compatible Spells - " + record.name}
+                            label="Combine"
+                            spells={getCompatibleSpells(record, spells, combos)}
+                            // onSelect={(selection) => {
+                            //     activateSpell(selection as Spell);
+                            // }}
+                        />
+                    </Space>
                 );
             },
         },
@@ -87,16 +71,18 @@ function SpellTable(props: Props) {
             title: "Family",
             dataIndex: "family",
             key: "family",
+            width: 30,
             hidden: hideFamilyColumn,
             sorter: (a, b) => a.family.localeCompare(b.family), // Simple alphabetical sort
             render: (_, record: Spell) => {
                 return (
-                    <Tag
-                        color={getUIColorBySpellFamily(record.family)}
-                        key={record.family}
-                    >
-                        {record.family}
-                    </Tag>
+                    <Flex justify="center">
+                        <Badge 
+                            key={generateUniqueKey()}
+                            color={getUIColorBySpellFamily(record.family)}
+                            size="default"
+                        />
+                    </Flex>
                 );
             },
         },
@@ -105,14 +91,39 @@ function SpellTable(props: Props) {
             key: "options",
             render: (_, record: Spell) => {
                 return (
-                    <SpellPicker
-                        title={"Compatible Spells - " + record.name}
-                        label="Combine"
-                        spells={getCompatibleSpells(record, spells, combos)}
-                        // onSelect={(selection) => {
-                        //     activateSpell(selection as Spell);
-                        // }}
-                    />
+                    <Space orientation="vertical">
+                        {record.activeAttribute ? (
+                            <Tag
+                                key={generateUniqueKey()}
+                                color={getUIColorByCustomType(
+                                    CUSTOM_TYPE.Attribute
+                                )}
+                                variant="solid"
+                                style={{
+                                    maxWidth: '100px',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',
+                                    display: 'inline-block',
+                                    verticalAlign: 'middle',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                {record.activeAttribute}
+                            </Tag>
+                        ) : null}
+                        {record.activeCombo ? (
+                            <Tag
+                                key={generateUniqueKey()}
+                                color={getUIColorByCustomType(
+                                    CUSTOM_TYPE.Combo
+                                )}
+                                variant="solid"
+                            >
+                                {record.activeCombo.name}
+                            </Tag>
+                        ) : null}
+                    </Space>
                 );
             },
         },
@@ -122,7 +133,7 @@ function SpellTable(props: Props) {
         <Table
             rowKey="id"
             columns={columns}
-            dataSource={sortedData}
+            dataSource={sortedTableData}
             pagination={false}
             showSorterTooltip={false}
         />

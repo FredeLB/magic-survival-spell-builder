@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import type { Spell, DrawerTriggerRef } from "_types";
+import type { Combo, DrawerTriggerRef } from "_types";
 import type { AntButtonVariant } from "_enums";
 
 
@@ -15,12 +15,12 @@ interface Props {
     label: string;
     title: string;
     variant?: AntButtonVariant;
-    spells: Spell[];
-    onSelect?: (selection: Spell) => void;
+    combos: Combo[];
+    onSelect?: (selection: Combo) => void;
 }
 
-function SpellPicker(props: Props) {
-    const { label, title, variant, spells, onSelect } = props;
+function ComboPicker(props: Props) {
+    const { label, title, variant, combos, onSelect } = props;
 
     const drawerRef = useRef<DrawerTriggerRef>(null);
 
@@ -29,31 +29,31 @@ function SpellPicker(props: Props) {
             ref={drawerRef} 
             title={title}
             triggerBtnLabel={label}
-            triggerBtnColor={getUIColorByCustomType(CUSTOM_TYPE.Spell)}
+            triggerBtnColor={getUIColorByCustomType(CUSTOM_TYPE.Combo)}
             triggerBtnVariant={variant}
         >
             <Flex gap="small" wrap>
-                {spells.map((spell: Spell) =>
+                {combos.map((combo: Combo) =>
                     onSelect != null ? (
                         <Button
                             key={generateUniqueKey()}
                             color={getUIColorByCustomType(
-                                CUSTOM_TYPE.Spell
+                                CUSTOM_TYPE.Combo
                             )}
-                            variant="outlined"
+                            variant={combo.active ? "solid" : "outlined"}
                             size="middle"
                             onClick={() => {
                                 drawerRef.current?.close();
-                                onSelect(spell);
+                                onSelect(combo);
                             }}
                         >
-                            {spell.name}
+                            {combo.name}
                         </Button>
                     ) : (
                         <Card
                             key={generateUniqueKey()}
                             size="small"
-                            title={spell.name}
+                            title={combo.name}
                             style={{ width: "100%" }}
                             // extra={<a href="#">More</a>}
                         >
@@ -66,4 +66,4 @@ function SpellPicker(props: Props) {
     );
 }
 
-export { SpellPicker };
+export { ComboPicker };

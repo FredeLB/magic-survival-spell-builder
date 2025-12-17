@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
-import type { Spell, DrawerTriggerRef } from "_types";
-import type { AntButtonVariant } from "_enums";
+import type { DrawerTriggerRef } from "_types";
+import type { AntButtonVariant, SpellAttribute } from "_enums";
 
 
 import { Card, Button, Flex } from "antd";
@@ -15,12 +15,12 @@ interface Props {
     label: string;
     title: string;
     variant?: AntButtonVariant;
-    spells: Spell[];
-    onSelect?: (selection: Spell) => void;
+    attributes: SpellAttribute[];
+    onSelect?: (attribute: SpellAttribute) => void;
 }
 
-function SpellPicker(props: Props) {
-    const { label, title, variant, spells, onSelect } = props;
+function AttributePicker(props: Props) {
+    const { label, title, variant, attributes, onSelect } = props;
 
     const drawerRef = useRef<DrawerTriggerRef>(null);
 
@@ -29,31 +29,31 @@ function SpellPicker(props: Props) {
             ref={drawerRef} 
             title={title}
             triggerBtnLabel={label}
-            triggerBtnColor={getUIColorByCustomType(CUSTOM_TYPE.Spell)}
+            triggerBtnColor={getUIColorByCustomType(CUSTOM_TYPE.Attribute)}
             triggerBtnVariant={variant}
         >
             <Flex gap="small" wrap>
-                {spells.map((spell: Spell) =>
+                {attributes.map((attribute: SpellAttribute) =>
                     onSelect != null ? (
                         <Button
                             key={generateUniqueKey()}
                             color={getUIColorByCustomType(
-                                CUSTOM_TYPE.Spell
+                                CUSTOM_TYPE.Attribute
                             )}
                             variant="outlined"
                             size="middle"
                             onClick={() => {
                                 drawerRef.current?.close();
-                                onSelect(spell);
+                                onSelect(attribute);
                             }}
                         >
-                            {spell.name}
+                            {attribute}
                         </Button>
                     ) : (
                         <Card
                             key={generateUniqueKey()}
                             size="small"
-                            title={spell.name}
+                            title={attribute}
                             style={{ width: "100%" }}
                             // extra={<a href="#">More</a>}
                         >
@@ -66,4 +66,4 @@ function SpellPicker(props: Props) {
     );
 }
 
-export { SpellPicker };
+export { AttributePicker };
