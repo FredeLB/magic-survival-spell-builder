@@ -13,6 +13,7 @@ import {
 } from "_utils";
 
 import { CUSTOM_TYPE } from "_enums";
+import { AttributeTag } from "./AttributeTag";
 
 interface Props {
     combos: Combo[];
@@ -81,21 +82,16 @@ function ComboTable(props: Props) {
                                     >
                                         {spellAndAttr.spell.name}
                                     </Tag>
-                                    <Tag
-                                        color={getUIColorByCustomType(
-                                            CUSTOM_TYPE.Attribute
-                                        )}
+                                    <AttributeTag 
+                                        name={spellAndAttr.attribute} 
                                         variant={
                                             spellAndAttr.spell
                                                 .activeAttribute ===
                                             spellAndAttr.attribute
                                                 ? "solid"
                                                 : "outlined"
-                                        }
-                                        key={`${record.id}-${spellAndAttr.attribute}`}
-                                    >
-                                        {spellAndAttr.attribute}
-                                    </Tag>
+                                        }  
+                                    />
                                 </Space>
                             )
                         )}

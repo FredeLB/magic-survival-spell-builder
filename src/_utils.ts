@@ -34,11 +34,11 @@ export function getCompatibleSpells(targetSpell: Spell, spells: Spell[], combos:
     });
 };
 
-export function getActiveSpells(spells: Spell[]): Spell[] {
-    return spells.filter((spell: Spell) => spell.active === true)
+export const getActiveSpells = (spells: Spell[]): Spell[] => {
+    return spells.filter((spell: Spell) => spell.active === true);
 };
 
-export function getInactiveSpells(spells: Spell[]): Spell[] {
+export const getInactiveSpells = (spells: Spell[]): Spell[] => {
     return spells.filter((spell: Spell) => spell.active === false)
 };
 
@@ -56,7 +56,7 @@ export function getSpellPotentialAttributes(spell: Spell, combos: Combo[]): Spel
 
     combos.forEach((combo: Combo) => {
         combo.spells.forEach((s) => {
-            if(s.id === spell.id && !attributes.includes(s.attribute)){
+            if (s.id === spell.id && !attributes.includes(s.attribute)) {
                 attributes = [
                     ...attributes,
                     s.attribute
@@ -68,7 +68,7 @@ export function getSpellPotentialAttributes(spell: Spell, combos: Combo[]): Spel
     return attributes
 };
 
-export function getComboSpellsAndAttributes(combo: Combo, spells: Spell[]):  {spell: Spell, attribute: SpellAttribute}[] {
+export function getComboSpellsAndAttributes(combo: Combo, spells: Spell[]): { spell: Spell, attribute: SpellAttribute }[] {
     return combo.spells.map(
         (spell: { id: string; attribute: SpellAttribute }) => {
             return {
@@ -83,7 +83,7 @@ export function getComboSpellsAndAttributes(combo: Combo, spells: Spell[]):  {sp
 };
 
 export function generateUniqueKey(): string {
-    return  `${Date.now()}-${Math.random()}`
+    return `${Date.now()}-${Math.random()}`
 }
 
 export function getUIColorByCustomType(customType: CustomType | undefined): AntButtonColor {
@@ -102,7 +102,7 @@ export function getUIColorByCustomType(customType: CustomType | undefined): AntB
         default:
             color = undefined;
     }
-    
+
     return color as AntButtonColor
 }
 
@@ -125,10 +125,27 @@ export function getUIColorBySpellFamily(family: SpellFamily | undefined): AntBut
         default:
             color = undefined;
     }
-    
+
     return color as AntButtonColor
 }
 
 export function getCustomType(item: unknown): CustomType | undefined {
     return item != null && typeof item === "object" && "type" in item ? item.type as CustomType : undefined;
+}
+
+export function setItem(key: string, value: unknown) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+        console.error('Error saving to localStorage', error);
+    }
+}
+
+export function getItem(key: string) {
+    try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : undefined;
+    } catch (error) {
+        console.error('Error reading from localStorage', error);
+    }
 }

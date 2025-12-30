@@ -3,26 +3,24 @@ import { useMemo } from "react";
 import type { TableProps } from "antd";
 import type { Spell, Combo } from "_types";
 
-import { Badge, Flex, Space, Table, Tag } from "antd";
-import { SpellPicker } from "_components";
+import { Badge, Flex, Space, Table } from "antd";
+import { AttributeTag, ComboTag, SpellPicker } from "_components";
 
 import {
     generateUniqueKey,
-    getUIColorByCustomType,
     getUIColorBySpellFamily,
     getCompatibleSpells,
 } from "_utils";
-
-import { CUSTOM_TYPE } from "_enums";
 
 interface Props {
     spells: Spell[];
     combos: Combo[];
     hideFamilyColumn: boolean;
+    onActivateSpell: (spell: Spell, activate?: boolean) => void;
 }
 
 function SpellTable(props: Props) {
-    const { spells, combos, hideFamilyColumn } = props;
+    const { spells, combos, hideFamilyColumn, onActivateSpell } = props;
 
     // Pre-sort data before passing to table
     const sortedTableData = useMemo(() => {
@@ -31,7 +29,7 @@ function SpellTable(props: Props) {
             if (a.active !== b.active) {
                 return a.active ? -1 : 1;
             }
-            
+
             // Both have same active status, sort alphabetically by name
             return a.name.localeCompare(b.name);
         });
@@ -45,24 +43,13 @@ function SpellTable(props: Props) {
             sorter: (a, b) => a.name.localeCompare(b.name), // Simple alphabetical sort
             render: (_, record: Spell) => {
                 return (
-                    <Space orientation="vertical">
-                        <Space>
-                            <Badge 
-                                key={generateUniqueKey()}
-                                status={record.active ? "success" : "default"}
-                            />
-
-                            <p>{record.name}</p>
-                        </Space>
-
-                        <SpellPicker
-                            title={"Compatible Spells - " + record.name}
-                            label="Combine"
-                            spells={getCompatibleSpells(record, spells, combos)}
-                            // onSelect={(selection) => {
-                            //     activateSpell(selection as Spell);
-                            // }}
+                    <Space>
+                        <Badge
+                            key={generateUniqueKey()}
+                            status={record.active ? "success" : "default"}
                         />
+
+                        <p>{record.name}</p>
                     </Space>
                 );
             },
@@ -77,7 +64,7 @@ function SpellTable(props: Props) {
             render: (_, record: Spell) => {
                 return (
                     <Flex justify="center">
-                        <Badge 
+                        <Badge
                             key={generateUniqueKey()}
                             color={getUIColorBySpellFamily(record.family)}
                             size="default"
@@ -93,37 +80,31 @@ function SpellTable(props: Props) {
                 return (
                     <Space orientation="vertical">
                         {record.activeAttribute ? (
-                            <Tag
-                                key={generateUniqueKey()}
-                                color={getUIColorByCustomType(
-                                    CUSTOM_TYPE.Attribute
-                                )}
-                                variant="solid"
-                                style={{
-                                    maxWidth: '100px',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                    whiteSpace: 'nowrap',
-                                    display: 'inline-block',
-                                    verticalAlign: 'middle',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                {record.activeAttribute}
-                            </Tag>
+                            <AttributeTag name={record.activeAttribute} />
                         ) : null}
                         {record.activeCombo ? (
-                            <Tag
-                                key={generateUniqueKey()}
-                                color={getUIColorByCustomType(
-                                    CUSTOM_TYPE.Combo
-                                )}
-                                variant="solid"
-                            >
-                                {record.activeCombo.name}
-                            </Tag>
+                            <ComboTag name={record.activeCombo.name} />
                         ) : null}
                     </Space>
+                );
+            },
+        },
+        {
+            title: "Actions",
+            key: "actions",
+            width: 100,
+            render: (_, record: Spell) => {
+                return (
+                    <SpellPicker
+                        title={"Compatible Spells - " + record.name}
+                        label="Combine"
+                        spells={getCompatibleSpells(record, spells, combos)}
+                        combos={combos}
+                        onSelect={(selection: Spell) => {
+                            onActivateSpell(selection);
+                        }}
+                        spellToCombine={record}
+                    />
                 );
             },
         },

@@ -8,9 +8,7 @@ import { CUSTOM_TYPE } from "_enums";
 
 import { Table, Button, Flex, Space } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import { 
-    AttributePicker,
- } from "_components";
+import { AttributePicker, ComboPicker } from "_components";
 
 import {
     getActiveSpells,
@@ -19,7 +17,6 @@ import {
     generateUniqueKey,
     getUIColorByCustomType,
 } from "_utils";
-import { ComboPicker } from "./ComboPicker";
 
 interface Props {
     spells: Spell[];
@@ -33,7 +30,13 @@ interface Props {
 }
 
 function ActiveSpellTable(props: Props) {
-    const { spells, combos, onComboSelect, onSpellAttributeSelect, onSpellDeactivation } = props;
+    const {
+        spells,
+        combos,
+        onComboSelect,
+        onSpellAttributeSelect,
+        onSpellDeactivation,
+    } = props;
 
     // Pre-sort data before passing to table
     const sortedSpells = useMemo(() => {
@@ -85,6 +88,16 @@ function ActiveSpellTable(props: Props) {
                                 size="middle"
                                 icon={<CloseOutlined />}
                                 iconPlacement={"end"}
+                                styles={{
+                                    content: {
+                                        maxWidth: '100px',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        whiteSpace: 'nowrap',
+                                        display: 'inline-block',
+                                        verticalAlign: 'middle',
+                                    }
+                                }}
                                 onClick={() =>
                                     onSpellAttributeSelect(record, null)
                                 }
@@ -95,12 +108,12 @@ function ActiveSpellTable(props: Props) {
                             <AttributePicker
                                 title={"Attributes - " + record.name}
                                 label="Attributes"
-                                attributes={getSpellPotentialAttributes(record, combos)}
+                                attributes={getSpellPotentialAttributes(
+                                    record,
+                                    combos
+                                )}
                                 onSelect={(attribute: SpellAttribute) => {
-                                        onSpellAttributeSelect(
-                                            record,
-                                            attribute
-                                        );
+                                    onSpellAttributeSelect(record, attribute);
                                 }}
                             />
                         )}
@@ -114,6 +127,16 @@ function ActiveSpellTable(props: Props) {
                                 size="middle"
                                 icon={<CloseOutlined />}
                                 iconPlacement={"end"}
+                                styles={{
+                                    content: {
+                                        maxWidth: '100px',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        whiteSpace: 'nowrap',
+                                        display: 'inline-block',
+                                        verticalAlign: 'middle',
+                                    }
+                                }}
                                 onClick={() => onComboSelect(record, null)}
                             >
                                 {record.activeCombo.name}
@@ -144,8 +167,7 @@ function ActiveSpellTable(props: Props) {
                             variant="solid"
                             icon={<CloseOutlined />}
                             onClick={() => onSpellDeactivation(record)}
-                        >
-                        </Button>
+                        ></Button>
                     </Flex>
                 );
             },

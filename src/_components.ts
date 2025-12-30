@@ -1,7 +1,11 @@
 export { ActiveSpellTable } from "components/ActiveSpellTable";
 export { AttributePicker } from "components/AttributePicker";
+export { AttributeTag } from "components/AttributeTag";
 export { BuilderAutoComplete } from "components/BuilderAutoComplete";
 export { ComboTable } from "components/ComboTable";
+export { ComboTag } from "components/ComboTag";
+export { ComboPicker } from "components/ComboPicker";
 export { DrawerTrigger } from "components/DrawerTrigger";
+export { Legend } from "components/Legend";
 export { SpellPicker } from "components/SpellPicker";
 export { SpellTable } from "components/SpellTable";
