@@ -390,7 +390,7 @@ export const SPELLS: Spell[] = [
         activeCombo: null
     },
     {
-        id: "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y7",
+        id: "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y5",
         name: "Snipe",
         family: SPELL_FAMILY.Passive,
         compatibleSpells: [
@@ -401,7 +401,7 @@ export const SPELLS: Spell[] = [
         activeCombo: null
     },
     {
-        id: "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y7",
+        id: "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y2",
         name: "Explorer",
         family: SPELL_FAMILY.Passive,
         compatibleSpells: [

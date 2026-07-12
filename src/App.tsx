@@ -13,19 +13,38 @@ import {
     SpellTable,
 } from "_components";
 
-import { getInactiveSpells, getActiveSpells, setItem, getItem } from "_utils";
+import { getInactiveSpells, getActiveSpells, setItem, getItem, mergeCombos, mergeSpells } from "_utils";
 
 import { COMBOS, SPELLS } from "_constants";
 
 const { Title } = Typography;
 
 function App() {
-    const [spells, setSpells] = useState<Spell[]>(
-        getItem('spells') || SPELLS.sort((a, b) => a.name.localeCompare(b.name))
-    );
-    const [combos, setCombos] = useState<Combo[]>(
-        getItem('combos') || COMBOS.sort((a, b) => a.name.localeCompare(b.name))
-    );
+
+    function initializeData() {
+        const storedSpells = getItem('spells') as Spell[] | undefined;
+        const storedCombos = getItem('combos') as Combo[] | undefined;
+    
+        if (!storedSpells && !storedCombos) {
+            return {
+                spells: [...SPELLS].sort((a, b) => a.name.localeCompare(b.name)),
+                combos: [...COMBOS].sort((a, b) => a.name.localeCompare(b.name)),
+            };
+        }
+    
+        const combos = mergeCombos(storedCombos ?? [], COMBOS)
+            .sort((a, b) => a.name.localeCompare(b.name));
+        const spells = mergeSpells(storedSpells ?? [], SPELLS, combos)
+            .sort((a, b) => a.name.localeCompare(b.name));
+    
+        return { spells, combos };
+    }
+
+    const { spells: initialSpells, combos: initialCombos } = initializeData();
+
+    const [spells, setSpells] = useState<Spell[]>(initialSpells);
+    const [combos, setCombos] = useState<Combo[]>(initialCombos);
+    
     const [hideFamilyColumn, setHideFamilyColumn] = useState<boolean>(true);
 
     useEffect(() => {

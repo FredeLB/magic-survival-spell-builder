@@ -149,3 +149,37 @@ export function getItem(key: string) {
         console.error('Error reading from localStorage', error);
     }
 }
+
+export function mergeCombos(stored: Combo[], constants: Combo[]): Combo[] {
+    return constants.map((constantCombo) => {
+        const storedCombo = stored.find((c) => c.id === constantCombo.id);
+        if (!storedCombo) return constantCombo;
+
+        return {
+            ...constantCombo,
+            active: storedCombo.active,
+        };
+    });
+}
+
+export function mergeSpells(
+    stored: Spell[],
+    constants: Spell[],
+    mergedCombos: Combo[]
+): Spell[] {
+    return constants.map((constantSpell) => {
+        const storedSpell = stored.find((s) => s.id === constantSpell.id);
+        if (!storedSpell) return constantSpell;
+
+        const activeCombo = storedSpell.activeCombo
+            ? mergedCombos.find((c) => c.id === storedSpell.activeCombo!.id) ?? null
+            : null;
+
+        return {
+            ...constantSpell,
+            active: storedSpell.active,
+            activeAttribute: storedSpell.activeAttribute,
+            activeCombo,
+        };
+    });
+}
