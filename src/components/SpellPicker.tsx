@@ -4,12 +4,14 @@ import type { Spell, DrawerTriggerRef, Combo } from "_types";
 import type { AntButtonVariant } from "_enums";
 
 
-import { Button, Card, Col, Flex, Row } from "antd";
-import { DrawerTrigger } from "_components";
+import { Button, Card, Col, Divider, Flex, Row, Space, Typography } from "antd";
+import { AttributeTag, ComboTag, DrawerTrigger } from "_components";
 
 import { generateUniqueKey, getUIColorByCustomType } from "_utils";
 
 import { CUSTOM_TYPE } from "_enums";
+
+const { Text } = Typography;
 
 interface Props {
     label: string;
@@ -22,13 +24,20 @@ interface Props {
 }
 
 function SpellPicker(props: Props) {
-    const { label, title, variant, spells, onSelect, spellToCombine } = props;
+    const { label, title, variant, spells, combos, onSelect, spellToCombine } = props;
 
     const drawerRef = useRef<DrawerTriggerRef>(null);
 
-    // const getCommonCombos = (spells: Spell[]): Combo[] => {
-    //     return []
-    // };
+    const getCommonCombos = (spell: Spell): Combo[] => {
+        return combos.filter((combo: Combo) => {
+            const comboSpellIds = combo.spells.map((s) => s.id);
+            return (
+                comboSpellIds.includes(spell.id) &&
+                spellToCombine != null &&
+                comboSpellIds.includes(spellToCombine.id)
+            );
+        });
+    };
 
     return (
         <DrawerTrigger
@@ -41,7 +50,7 @@ function SpellPicker(props: Props) {
             {spellToCombine != null ? (
                 <Row gutter={[8, 8]} wrap={true}>
                     {spells.map((spell: Spell) =>
-                        <Col key={generateUniqueKey()} span={12}>     
+                        <Col key={generateUniqueKey()} span={24}>     
                             <Card
                                 key={generateUniqueKey()}
                                 size="small"
@@ -49,18 +58,33 @@ function SpellPicker(props: Props) {
                                 // extra={<a href="#">More</a>}
                             >
                                 <Flex gap="middle" vertical>
-                                    {/* <Flex gap="small" wrap>
-                                        {getSpellPotentialAttributes(
-                                            spell,
-                                            combos
-                                        ).map((attribute: SpellAttribute) => (
-                                            <AttributeTag
-                                                key={generateUniqueKey()}
-                                                name={attribute}
-                                                variant={attribute === spell.activeAttribute ? "solid" : "outlined"}
-                                            />
-                                        ))}
-                                    </Flex> */}
+                                    {getCommonCombos(spell).map((combo: Combo) =>
+                                        <Flex key={generateUniqueKey()} gap="small" vertical>
+                                            <Space key={generateUniqueKey()}>
+                                            <Text>Combo: </Text>
+                                                <ComboTag 
+                                                    key={generateUniqueKey()} 
+                                                    name={combo.name} 
+                                                    variant={combo.active ? "solid" : "outlined"}    
+                                                />
+                                            </Space>
+                                            <Space key={generateUniqueKey()}>
+                                                <Text>Attribute: </Text>
+                                                <AttributeTag 
+                                                    name={combo.spells.find((c) => c.id == spell.id)?.attribute} 
+                                                    variant={spell.activeAttribute === combo.spells.find((c) => c.id == spell.id)?.attribute ? "solid" : "outlined"}
+                                                />
+                                            </Space>
+                                            <Space key={generateUniqueKey()}>
+                                                <Text>Attribute ({spellToCombine.name}): </Text>
+                                                <AttributeTag 
+                                                    name={combo.spells.find((c) => c.id == spellToCombine.id)?.attribute} 
+                                                    variant={spellToCombine.activeAttribute === combo.spells.find((c) => c.id == spellToCombine.id)?.attribute ? "solid" : "outlined"}
+                                                />
+                                            </Space>
+                                            <Divider key={generateUniqueKey()} />
+                                        </Flex>
+                                    )}
 
                                     {onSelect != null ? (
                                         <Button

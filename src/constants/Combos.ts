@@ -541,5 +541,87 @@ export const COMBOS: Combo[] = [
         ],
         active: false,
         type: CUSTOM_TYPE.Combo
-    }
+    },
+    {
+        id: "b5c6d7e8-f9g0-1h2i-3j4k-5l6m7n8o9p0q",
+        name: "Perpetual Engine",
+        spells: [
+            { id: "f7g8h9i0-j-k1l2-m3n4-o5p61a2b3c4u", attribute: SPELL_ATTRIBUTE.PassiveMaxLevel }, // intelligence
+            { id: "e6f7g8h9-i0j-k1l2-m3n4-o5p61a2b3c4t", attribute: SPELL_ATTRIBUTE.UnleashMana } // Magic Circle
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Combo
+    },
+    {
+        id: "b5c6d7e8-f9g0-1h2i-3j4k-5l6m7n8o9p0r",
+        name: "Gate of Creation",
+        spells: [
+            { id: "f7g8h9i0-j-k1l2-m3n4-o5p61a2b3c4u", attribute: SPELL_ATTRIBUTE.PassiveMaxLevel }, // intelligence
+            { id: "e6f7g8h9-i0j-k1l2-m3n4-o5p61a2b3c4t", attribute: SPELL_ATTRIBUTE.MaterialSyntesis } // Magic Circle
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Combo
+    },
+    {
+        id: "b5c6d7e8-f9g0-1h2i-3j4k-5l6m7n8o9p9r",
+        name: "Overmind",
+        spells: [
+            { id: "f7g8h9i0-j-k1l2-m3n4-o5p61a2b3c4u", attribute: SPELL_ATTRIBUTE.PassiveMaxLevel }, // intelligence
+            { id: "e6f7g8h9-i0j-k1l2-m3n4-o5p61a2b3c4t", attribute: SPELL_ATTRIBUTE.GreatMagicCircle } // Magic Circle
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Combo
+    },
+    {
+        id: "b5c6d7e8-f9g3-1h2i-3j4k-5l6m7n8o9p9r",
+        name: "Teleport",
+        spells: [
+            { id: "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4s", attribute: SPELL_ATTRIBUTE.SpaceWarp }, // cloaking
+            { id: "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y7", attribute: SPELL_ATTRIBUTE.PassiveMaxLevel } // concentration
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Combo
+    },
+    {
+        id: "b5c6d7e8-f9g3-1h2i-3j4k-5l6m7n8o9p9s",
+        name: "Photon Explosion",
+        spells: [ 
+            { id: "j1k2l3m4-n5o6-p7q8-r9s0-t1u2v3w4x5y6", attribute: SPELL_ATTRIBUTE.PassiveMaxLevel }, // arcane effuse
+            { id: "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4d", attribute: SPELL_ATTRIBUTE.DestructionField } // shield
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Combo
+    },
+    {
+        id: "b5c6d7e8-f9g3-1h2i-3j4k-5l6m7n8o9p9t",
+        name: "Discharge",
+        spells: [
+            { id: "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2", attribute: SPELL_ATTRIBUTE.LightningExplosion }, // thunderstorm
+            { id: "d592a809-fcb4-892f-8ae9-6ca54a4bb26b", attribute: SPELL_ATTRIBUTE.HighOutput } // electric shock
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Combo
+    },
+    {
+        id: "b5c6d7e8-f9g3-1h2i-3j4k-5l6m7n8o9p9u",
+        name: "Soul Blade",
+        spells: [
+            { id: "f8b4-4d3e-9e2a-1b5f6c7d8e9f-c4e1f3d2", attribute: SPELL_ATTRIBUTE.LightningExplosion }, // thunderstorm
+            { id: "d592a809-fcb4-892f-8ae9-6ca54a4bb26b", attribute: SPELL_ATTRIBUTE.HighOutput } // electric shock
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Combo
+    },
+    {
+        id: "b5c6d7e8-f9g3-1h2i-3j4k-5l6m7n8o9p9v",
+        name: "Glacium",
+        spells: [
+            { id: "o5p61a2b-3c4d-5e6f-7g8h-9i0jk1l2m3n4", attribute: SPELL_ATTRIBUTE.IceAge }, // frost nova
+            { id: "6f7g8h9i-0j-k1l2-m3n4-o5p61a2b3c4d", attribute: SPELL_ATTRIBUTE.GreatEruption } // tsunami
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Combo
+    },
 ];
+
+// TODO FREDE => Deux Ex Machina

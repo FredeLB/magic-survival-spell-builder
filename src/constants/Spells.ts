@@ -244,7 +244,8 @@ export const SPELLS: Spell[] = [
         family: SPELL_FAMILY.Utility,
         compatibleSpells: [
             "5e6f7g8h-9i0j-k1l2-m3n4-o5p61a2b3c4d", // electric zone
-            "k1l2m3n4-o5p6-1a2b-3c4d-5e6f7g8h9i0j" // energy bolt
+            "k1l2m3n4-o5p6-1a2b-3c4d-5e6f7g8h9i0j", // energy bolt
+            "j1k2l3m4-n5o6-p7q8-r9s0-t1u2v3w4x5y6" // arcane effuse
         ],
         active: false,
         type: CUSTOM_TYPE.Spell,
@@ -294,5 +295,120 @@ export const SPELLS: Spell[] = [
         type: CUSTOM_TYPE.Spell,
         activeAttribute: null,
         activeCombo: null
-    }
+    },
+    {
+        id: "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4s",
+        name: "Cloaking",
+        family: SPELL_FAMILY.Utility,
+        compatibleSpells: [
+            "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y7" // concentration
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "e6f7g8h9-i0j-k1l2-m3n4-o5p61a2b3c4t",
+        name: "Magic Circle",
+        family: SPELL_FAMILY.Utility,
+        compatibleSpells: [
+            "f7g8h9i0-j-k1l2-m3n4-o5p61a2b3c4u" // intelligence
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "f7g8h9i0-j-k1l2-m3n4-o5p61a2b3c4u",
+        name: "Intelligence",
+        family: SPELL_FAMILY.Passive,
+        compatibleSpells: [
+            "e6f7g8h9-i0j-k1l2-m3n4-o5p61a2b3c4t" // magic circle
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "g8h9i0j1-k1l2-m3n4-o5p61a2b3c4v",
+        name: "Fast Casting",
+        family: SPELL_FAMILY.Passive,
+        compatibleSpells: [
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "h9i0j1k2-l3m4-n5o6-p7q8-r9s0t1u2v3w4",
+        name: "Vitality",
+        family: SPELL_FAMILY.Passive,
+        compatibleSpells: [
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "i0j1k2l3-m4n5-o6p7-q8r9-s0t1u2v3w4x5",
+        name: "Haste",
+        family: SPELL_FAMILY.Passive,
+        compatibleSpells: [
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "j1k2l3m4-n5o6-p7q8-r9s0-t1u2v3w4x5y6",
+        name: "Arcane Effuse",
+        family: SPELL_FAMILY.Passive,
+        compatibleSpells: [
+            "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4d" // shield
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y7",
+        name: "Concentration",
+        family: SPELL_FAMILY.Passive,
+        compatibleSpells: [
+            "d5e6f7g8-h9i0j-k1l2-m3n4-o5p61a2b3c4s" // cloaking
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y7",
+        name: "Snipe",
+        family: SPELL_FAMILY.Passive,
+        compatibleSpells: [
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
+    {
+        id: "j2k3l4m5-n6o7-p8q9-r0s1-t2u3v4w5x6y7",
+        name: "Explorer",
+        family: SPELL_FAMILY.Passive,
+        compatibleSpells: [
+        ],
+        active: false,
+        type: CUSTOM_TYPE.Spell,
+        activeAttribute: null,
+        activeCombo: null
+    },
 ];

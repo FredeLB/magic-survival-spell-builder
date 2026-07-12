@@ -9,7 +9,7 @@ import { CUSTOM_TYPE } from "_enums";
 
 
 interface Props {
-    name: string;
+    name?: string;
     variant?: AntTagVariant;
 }
 

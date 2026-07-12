@@ -3,13 +3,17 @@ import { useMemo } from "react";
 import type { TableProps } from "antd";
 import type { Spell, Combo } from "_types";
 
-import { Badge, Flex, Space, Table } from "antd";
+import { Badge, Button, Flex, Space, Table } from "antd";
 import { AttributeTag, ComboTag, SpellPicker } from "_components";
+
+import { CUSTOM_TYPE } from "_enums";
 
 import {
     generateUniqueKey,
     getUIColorBySpellFamily,
+    getUIColorByCustomType,
     getCompatibleSpells,
+    getSpellPotentialCombos,
 } from "_utils";
 
 interface Props {
@@ -55,7 +59,7 @@ function SpellTable(props: Props) {
             },
         },
         {
-            title: "Family",
+            title: "Fam.",
             dataIndex: "family",
             key: "family",
             width: 30,
@@ -92,19 +96,36 @@ function SpellTable(props: Props) {
         {
             title: "Actions",
             key: "actions",
-            width: 100,
             render: (_, record: Spell) => {
                 return (
-                    <SpellPicker
-                        title={"Compatible Spells - " + record.name}
-                        label="Combine"
-                        spells={getCompatibleSpells(record, spells, combos)}
-                        combos={combos}
-                        onSelect={(selection: Spell) => {
-                            onActivateSpell(selection);
-                        }}
-                        spellToCombine={record}
-                    />
+                    <Flex gap="small" wrap>   
+                        {!record.active ? 
+                            <Button
+                                color={getUIColorByCustomType(
+                                    CUSTOM_TYPE.Spell
+                                )}
+                                variant="outlined"
+                                size="middle"
+                                onClick={() => {
+                                    onActivateSpell(record);
+                                }}
+                            >
+                                Activate
+                            </Button>   
+                        : null                        
+                        }
+                        <SpellPicker
+                            title={"Compatible Spells - " + record.name}
+                            label="Combine"
+                            spells={getCompatibleSpells(record, spells, combos)}
+                            combos={getSpellPotentialCombos(record, combos)}
+                            onSelect={(selection: Spell) => {
+                                onActivateSpell(selection);
+                            }}
+                            spellToCombine={record}
+                        />
+                    </Flex>
+
                 );
             },
         },

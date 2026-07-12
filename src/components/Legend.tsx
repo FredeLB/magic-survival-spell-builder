@@ -19,11 +19,12 @@ function Legend() {
     return (
         <>
             <Drawer
+                title="Legend"
                 closable={{ "aria-label": "Close Button" }}
                 onClose={() => setOpen(false)}
                 open={open}
             >
-                <Title >Legend</Title>
+                <Title level={2}>Spell Families</Title>
 
                 {Object.values(SPELL_FAMILY).map((family) => 
                     <div key={generateUniqueKey()} style={{ marginBottom: '12px' }}>

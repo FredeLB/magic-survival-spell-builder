@@ -5,7 +5,6 @@ import type { AntButtonColor, AntButtonVariant } from "_enums";
 
 import { Drawer, Button } from "antd";
 
-
 interface Props {
     title: string;
     triggerBtnLabel: string;
@@ -14,11 +13,15 @@ interface Props {
     children: React.ReactNode;
 }
 
-
 const DrawerTrigger = forwardRef<DrawerTriggerRef, Props>(
     function DrawerTrigger(props, ref) {
-
-        const { triggerBtnLabel, children, triggerBtnColor, triggerBtnVariant } = props;
+        const {
+            title,
+            triggerBtnLabel,
+            children,
+            triggerBtnColor,
+            triggerBtnVariant,
+        } = props;
 
         const [open, setOpen] = useState<boolean>(false);
 
@@ -26,9 +29,9 @@ const DrawerTrigger = forwardRef<DrawerTriggerRef, Props>(
         useImperativeHandle(ref, () => ({
             open: () => setOpen(true),
             close: () => setOpen(false),
-            toggle: () => setOpen(prev => !prev),
+            toggle: () => setOpen((prev) => !prev),
         }));
-    
+
         return (
             <>
                 <Button
@@ -40,15 +43,24 @@ const DrawerTrigger = forwardRef<DrawerTriggerRef, Props>(
                     {triggerBtnLabel}
                 </Button>
                 <Drawer
+                    title={title}
                     closable={{ "aria-label": "Close Button" }}
                     onClose={() => setOpen(false)}
                     open={open}
+                    styles={{
+                        header: {
+                            padding: "20px 12px",
+                        },
+                        body: {
+                            padding: "12px",
+                        },
+                    }}
                 >
                     {children}
                 </Drawer>
             </>
         );
     }
-)
+);
 
 export { DrawerTrigger };

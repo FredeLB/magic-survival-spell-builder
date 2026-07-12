@@ -6,6 +6,7 @@ export const SPELL_FAMILY = {
     EnergyEngineering: 'Energy Engineering',
     Utility: 'Utility',
     None: 'None',
+    Passive: 'Passive',
 } as const;
 
 // Derive types from runtime objects
